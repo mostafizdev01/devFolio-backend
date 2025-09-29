@@ -11,9 +11,9 @@ let server: Server | null = null;
 async function connectToDB(){
     try {
         await prisma.$connect()
-        console.log("** ✅✅ DB Connection Successfull")
+        console.log("✅✅ DB Connection Successfull")
     } catch (error) {
-        console.log("** ❌❌ DB Connection Faild")
+        console.log("❌❌ DB Connection Faild")
         process.exit(1); // close the server
     }
 }
