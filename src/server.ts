@@ -2,6 +2,7 @@ import http, { Server } from "http";
 import dotenv from "dotenv";
 import { app } from "./app";
 import { prisma } from "./config/db";
+import { seedAdmin } from "./utils/seedSuperAdmin";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ async function startServer() {
 // Start the application
 (async ()=> { // create iife function
     await startServer()
+    await seedAdmin()
 })()
 
 /**
