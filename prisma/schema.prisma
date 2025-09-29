@@ -18,6 +18,7 @@ model Admin {
   name      String
   email     String    @unique
   password  String // bcrypt hashed
+  role      String    @default("ADMIN")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   Blog      Blog[]

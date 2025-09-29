@@ -31,6 +31,11 @@ async function startServer() {
     }
 }
 
+// Start the application
+(async ()=> { // create iife function
+    await startServer()
+})()
+
 /**
  * Gracefully shutdown the server and close database connections.
  * @param {string} signal - The termination signal received.
@@ -72,6 +77,3 @@ function handleProcessEvents() {
         gracefulShutdown("unhandledRejection");
     });
 }
-
-// Start the application
-startServer();
