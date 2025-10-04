@@ -32,8 +32,11 @@ const UpdateProjectById = async (id: string, data:Partial<Project>) => {
 }
 
 /// Delete projects by id
-const DeleteProjectById = async () => {
-    console.log("Delete single Project is clicked..");
+const DeleteProjectById = async (id: string) => {
+    const result = await prisma.project.delete({
+        where: {id}
+    })
+    return result;
 }
 
 export const ProjectServices = {

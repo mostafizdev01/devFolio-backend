@@ -45,8 +45,8 @@ const UpdateProjectById = async (req: Request, res: Response) => {
 
 // Delete project By Id
 const DeleteProjectById = async (req: Request, res: Response) => {
-    const result = await ProjectServices.getAllProject();
-    res.status(200).json({ status: true, message: "Delete Project Successfull" })
+    const result = await ProjectServices.DeleteProjectById(req.params.id as string);
+    res.status(200).json({ status: true, message: "Delete Project Successfull", data: result })
 
 }
 
