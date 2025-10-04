@@ -36,8 +36,10 @@ const getProjectById = async (req: Request, res: Response) => {
 
 // Update project by id
 const UpdateProjectById = async (req: Request, res: Response) => {
-    const result = await ProjectServices.getAllProject();
-    res.status(200).json({ status: true, message: "Project Updated Successfull" })
+    const params = req.params.id as string;
+    const body = req.body;
+    const result = await ProjectServices.UpdateProjectById(params, body);
+    res.status(200).json({ status: true, message: "Project Updated Successfull", data: result })
 
 }
 

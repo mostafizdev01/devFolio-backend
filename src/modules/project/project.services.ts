@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma, Project } from "@prisma/client";
 import { prisma } from "../../config/db";
 
 /// create project
@@ -19,14 +19,16 @@ const getProjectById = async (id: string) => {
     const result = await prisma.project.findUnique({
         where: {id}
     })
-
     return result;
-    
 }
 
 /// Updated projects by id
-const UpdateProjectById = async () => {
-    console.log("Update single Project is clicked..");
+const UpdateProjectById = async (id: string, data:Partial<Project>) => {
+    const result = await prisma.project.update({
+        where: {id},
+        data
+    })
+    return result;
 }
 
 /// Delete projects by id
