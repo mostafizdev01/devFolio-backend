@@ -1,8 +1,10 @@
+import { Prisma } from "@prisma/client";
+import { prisma } from "../../config/db";
 
 /// create project
-const createProject = async () => {
-    console.log("Create Project is clicked..");
-    
+const createProject = async (payload: Prisma.ProjectCreateInput) => {
+    const result = await prisma.project.create({data:payload})
+    return result
 }
 
 /// get all projects

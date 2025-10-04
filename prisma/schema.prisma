@@ -21,7 +21,6 @@ model Admin {
   role      String    @default("ADMIN")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  Project   Project[]
 }
 
 model Blog {
@@ -38,16 +37,14 @@ model Blog {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  image       String? // Thumbnail/screenshot
-  techStack   String? // Example: "Next.js, Prisma, Tailwind"
-  liveUrl     String? // Live demo
-  githubUrl   String? // GitHub repo
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  adminId String
-  admin   Admin  @relation(fields: [adminId], references: [id])
+  id           String   @id @default(uuid()) // unique project id
+  title        String // project title
+  description  String // project description
+  technologies String[] // array of technologies
+  githubUrl    String? // optional github repo link
+  liveUrl      String? // optional live demo link
+  imageUrl     String // project image
+  featured     Boolean  @default(false) // featured project or not
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
