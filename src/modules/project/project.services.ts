@@ -9,13 +9,18 @@ const createProject = async (payload: Prisma.ProjectCreateInput) => {
 
 /// get all projects
 const getAllProject = async () => {
-    console.log("get all Project is clicked..");
+    const result = await prisma.project.findMany();
+    return result
     
 }
 
 /// get projects by id
-const getProjectById = async () => {
-    console.log("get single Project is clicked..");
+const getProjectById = async (id: string) => {
+    const result = await prisma.project.findUnique({
+        where: {id}
+    })
+
+    return result;
     
 }
 

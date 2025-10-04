@@ -23,14 +23,14 @@ const createProject = async (req: Request, res: Response) => {
 // Get All project
 const getAllProject = async (req: Request, res: Response) => {
     const result = await ProjectServices.getAllProject();
-    res.status(200).json({ status: true, message: "All Project Get Successfull" })
+    res.status(200).json({ status: true, message: "All Project Get Successfull", data: result })
 
 }
 
 // Get project by id
 const getProjectById = async (req: Request, res: Response) => {
-    const result = await ProjectServices.getProjectById();
-    res.status(200).json({ status: true, message: "Single Project Get Successfull" })
+    const result = await ProjectServices.getProjectById(req.params.id as string);
+    res.status(200).json({ status: true, message: "Single Project Get Successfull", data: result })
 
 }
 
