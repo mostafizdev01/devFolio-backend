@@ -52,10 +52,12 @@ const LoginAdmin = async ({ email, password }: { email: string, password: string
         }
     }
 
+    const {password:_, ...safeAdmin} = admin; // password distructring kore underSchore(_) nam disi. ei name ta problem hobe na because amra ei name ta chai na && use korbo na.
+
     return {
         success: true,
         message: "Login Successfull",
-        admin
+        admin: safeAdmin
     }
 }
 

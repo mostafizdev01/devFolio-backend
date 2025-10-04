@@ -21,21 +21,20 @@ model Admin {
   role      String    @default("ADMIN")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  Blog      Blog[]
   Project   Project[]
 }
 
 model Blog {
-  id        String   @id @default(uuid())
-  title     String
-  slug      String   @unique // SEO-friendly URL (/blogs/my-first-blog)
-  content   String // Rich text data (React Quill থেকে আসবে)
-  image     String? // Thumbnail
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  adminId String
-  admin   Admin  @relation(fields: [adminId], references: [id])
+  id          String   @id @default(uuid()) // unique ID
+  title       String // blog title
+  slug        String   @unique // for URL
+  excerpt     String? // short description
+  content     String // full blog content
+  featured    Boolean  @default(false) // featured or not
+  publishedAt DateTime // published date
+  tags        String[] // array of tags
+  createdAt   DateTime @default(now()) // auto generate
+  updatedAt   DateTime @updatedAt // auto update
 }
 
 model Project {
