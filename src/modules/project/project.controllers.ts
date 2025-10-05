@@ -22,31 +22,47 @@ const createProject = async (req: Request, res: Response) => {
 
 // Get All project
 const getAllProject = async (req: Request, res: Response) => {
-    const result = await ProjectServices.getAllProject();
-    res.status(200).json({ status: true, message: "All Project Get Successfull", data: result })
+    try {
+        const result = await ProjectServices.getAllProject();
+        res.status(200).json({ status: true, message: "All Project Get Successfull", data: result })
+    } catch (error) {
+        res.status(500).json({ status: false, message: "Something wen't wrong!", data: error })
+    }
 
 }
 
 // Get project by id
 const getProjectById = async (req: Request, res: Response) => {
-    const result = await ProjectServices.getProjectById(req.params.id as string);
-    res.status(200).json({ status: true, message: "Single Project Get Successfull", data: result })
+    try {
+        const result = await ProjectServices.getProjectById(req.params.id as string);
+        res.status(200).json({ status: true, message: "Single Project Get Successfull", data: result })
+    } catch (error) {
+        res.status(500).json({ status: false, message: "Something wen't wrong!", data: error })
+    }
 
 }
 
 // Update project by id
 const UpdateProjectById = async (req: Request, res: Response) => {
-    const params = req.params.id as string;
-    const body = req.body;
-    const result = await ProjectServices.UpdateProjectById(params, body);
-    res.status(200).json({ status: true, message: "Project Updated Successfull", data: result })
+    try {
+        const params = req.params.id as string;
+        const body = req.body;
+        const result = await ProjectServices.UpdateProjectById(params, body);
+        res.status(200).json({ status: true, message: "Project Updated Successfull", data: result })
+    } catch (error) {
+        res.status(500).json({ status: false, message: "Something wen't wrong!", data: error })
+    }
 
 }
 
 // Delete project By Id
 const DeleteProjectById = async (req: Request, res: Response) => {
-    const result = await ProjectServices.DeleteProjectById(req.params.id as string);
-    res.status(200).json({ status: true, message: "Delete Project Successfull", data: result })
+    try {
+        const result = await ProjectServices.DeleteProjectById(req.params.id as string);
+        res.status(200).json({ status: true, message: "Delete Project Successfull", data: result })
+    } catch (error) {
+        res.status(500).json({ status: false, message: "Something wen't wrong!", data: error })
+    }
 
 }
 
